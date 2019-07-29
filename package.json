@@ -1,0 +1,80 @@
+{
+  "name": "node-http-lifecycle",
+  "version": "1.0.0",
+  "description": "Measure latency for Node HTTP lifecycle events",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "format": "prettier --no-config --write 'src/**/*.ts'",
+    "check-format": "prettier --no-config -l 'src/**/*.ts'",
+    "lint": "tslint --project .",
+    "lint-fix": "tslint --project . --fix",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/congruencelabs/node-http-lifecycle.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Http",
+    "http-requests",
+    "node-http-lifecycle"
+  ],
+  "author": "Congruence Labs<congruencelabs@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/congruencelabs/node-http-lifecycle/issues"
+  },
+  "homepage": "https://github.com/congruencelabs/node-http-lifecycle#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/nock": "^10.0.3",
+    "@types/node": "^12.0.2",
+    "husky": "^2.3.0",
+    "jest": "^24.7.1",
+    "lint-staged": "^8.1.5",
+    "nock": "^10.0.6",
+    "prettier": "^1.16.4",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "testEnvironment": "node",
+    "testRegex": "(/tests/.*|(\\.|/)test)\\.ts$",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.ts": [
+        "tslint -p tsconfig.json --fix",
+        "prettier --no-config --write",
+        "git add"
+      ],
+      "*.{js,json}": [
+        "prettier --no-config --write",
+        "git add"
+      ]
+    }
+  }
+}
