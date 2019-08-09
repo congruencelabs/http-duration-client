@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "10"
+  - "node"
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run check-format
+  - npm run lint
+  - npm run test
+  - npm run build
