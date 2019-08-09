@@ -20,8 +20,16 @@ interface TimedRequestOptions extends https.RequestOptions {
 
 export default function requestWithDuration(
   options: TimedRequestOptions,
-  callback: (err: HttpError, res: ResponseWithDuration) => any
-): void {
+  callback?: (err: HttpError, res: ResponseWithDuration) => any
+): Promise<ResponseWithDuration> {
+  if (callback == null) {
+    return new Promise((resolve, reject) => {
+      requestWithDuration(options, (err, data) => {
+        return err ? reject(err) : resolve(data);
+      });
+    });
+  }
+
   const httpTimestamp: HttpTimestamp = {
     start: process.hrtime(),
     dnsLookup: undefined,

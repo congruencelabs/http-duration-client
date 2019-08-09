@@ -59,4 +59,23 @@ describe.only("http-client with timer", () => {
       }
     );
   });
+
+  test("should be able to return duration for async request", async () => {
+    nock("https://example.org")
+      .get("/")
+      .reply(200, {
+        key: "value"
+      });
+
+    const { duration } = await requestWithDuration({
+      url: "https://example.org"
+    });
+
+    expect(duration.dnsLookup).not.toBeDefined();
+    expect(duration.tcpConnection).toBeDefined();
+    expect(duration.tlsHandshake).toBeDefined();
+    expect(duration.firstByte).toBeDefined();
+    expect(duration.contentTransfer).toBeDefined();
+    expect(duration.total).toBeDefined();
+  });
 });
