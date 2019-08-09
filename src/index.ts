@@ -1,3 +1,3 @@
-import requestWithTimings from "./request-with-timings";
+import requestWithDuration from "./request-with-duration";
 
-export { requestWithTimings };
+export { requestWithDuration };

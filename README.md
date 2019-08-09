@@ -1,10 +1,16 @@
-# node-http-lifecycle
-Measure latency for Node HTTP lifecycle events
+# http-duration-client
+Measure duration for Node `HTTP` lifecycle events namely:
+* DNS lookup
+* TCP connect
+* TLS connect
+* First byte
+* Content transfer
+* Total request 
 
 ## Development
 1. To check the HTTP lifecycle events, clone this repository
 ```
-git clone git@github.com:congruencelabs/node-http-lifecycle.git
+git clone git@github.com:congruencelabs/http-duration-client.git
 ```
 
 2. Install the package dependencies using `yarn`
@@ -12,24 +18,24 @@ git clone git@github.com:congruencelabs/node-http-lifecycle.git
 yarn install
 ```
 
-3. Run the `examples/client-with-timing.js` file to see the lifecycle events being logged for a request to `https://api.github.com/users`
+3. Run the `examples/client-with-duration.js` file to see the lifecycle events being logged for a request to `https://api.github.com/users`
 
 
 ## Usage
-1. Install the `node-http-lifecycle` using `npm` or `yarn`
+1. Install the `http-duration-client` using `npm` or `yarn`
 ```
-npm install node-http-lifecycle
+npm install http-duration-client
 ```
 or
 ```
-yarn add node-http-lifecycle
+yarn add http-duration-client
 ```
 
 2. Make an http request to an endpoint as shown in example below
 ```javascript
-const { requestWithTimings } = require('node-http-lifecycle');
+const { requestWithDuration } = require('http-duration-client');
 
-requestWithTimings({
+requestWithDuration({
         url: "https://api.github.com/users",
         headers: {
             'User-Agent': 'Example'
@@ -39,12 +45,12 @@ requestWithTimings({
         if(err) {
             console.error(err);
         } else {
-            console.log(res.timings);
+            console.log(res.duration);
         }
 });
 ```
 
-The result of the above will be
+The result of the above should look similar to
 ```json
 { 
     "dnsLookup": 62.253469,

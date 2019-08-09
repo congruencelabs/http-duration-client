@@ -1,5 +1,5 @@
 import * as nock from "nock";
-import { requestWithTimings } from "../index";
+import { requestWithDuration } from "../index";
 
 describe.only("http-client with timer", () => {
   test("should be able to make http request to remote http server", async () => {
@@ -9,12 +9,12 @@ describe.only("http-client with timer", () => {
         key: "value"
       });
 
-    requestWithTimings(
+    requestWithDuration(
       {
         url: "http://example.org"
       },
       (_, res) => {
-        expect(res.timings).toBeInstanceOf(Object);
+        expect(res.duration).toBeInstanceOf(Object);
         expect(res.body).toEqual(JSON.stringify({ key: "value" }));
       }
     );
@@ -27,35 +27,35 @@ describe.only("http-client with timer", () => {
         key: "value"
       });
 
-    requestWithTimings(
+    requestWithDuration(
       {
         url: "https://example.org"
       },
       (_, res) => {
-        expect(res.timings).toBeInstanceOf(Object);
+        expect(res.duration).toBeInstanceOf(Object);
         expect(res.body).toEqual(JSON.stringify({ key: "value" }));
       }
     );
   });
 
-  test("should be able to return timings for http request response lifecycle", async () => {
+  test("should be able to return duration for http request response lifecycle", async () => {
     nock("https://example.org")
       .get("/")
       .reply(200, {
         key: "value"
       });
 
-    requestWithTimings(
+    requestWithDuration(
       {
         url: "https://example.org"
       },
       (_, res) => {
-        expect(res.timings.dnsLookup).not.toBeDefined();
-        expect(res.timings.tcpConnection).toBeDefined();
-        expect(res.timings.tlsHandshake).toBeDefined();
-        expect(res.timings.firstByte).toBeDefined();
-        expect(res.timings.contentTransfer).toBeDefined();
-        expect(res.timings.total).toBeDefined();
+        expect(res.duration.dnsLookup).not.toBeDefined();
+        expect(res.duration.tcpConnection).toBeDefined();
+        expect(res.duration.tlsHandshake).toBeDefined();
+        expect(res.duration.firstByte).toBeDefined();
+        expect(res.duration.contentTransfer).toBeDefined();
+        expect(res.duration.total).toBeDefined();
       }
     );
   });

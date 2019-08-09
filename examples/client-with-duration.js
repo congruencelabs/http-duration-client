@@ -1,6 +1,6 @@
-const { requestWithTimings } = require("../dist/index");
+const { requestWithDuration } = require("../dist/index");
 
-requestWithTimings(
+requestWithDuration(
   {
     url: "https://api.github.com/users",
     headers: {
@@ -12,7 +12,7 @@ requestWithTimings(
     if (err) {
       console.error(">>>>>>>>>>>error", err);
     } else {
-      console.log(res.timings);
+      console.log(res.duration);
     }
   }
 );
