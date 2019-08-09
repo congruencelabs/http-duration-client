@@ -1,7 +1,5 @@
-*
-
-!dist
-!LICENSE
-!package.json
-!README.md
-!yarn.lock
+src
+node_modules
+examples
+.travis.yml
+tsconfig.json
