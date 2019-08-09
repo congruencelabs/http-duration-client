@@ -8,7 +8,7 @@ class HttpError extends Error {
   code: string;
 }
 
-interface TimedResponse {
+interface ResponseWithDuration {
   duration: HttpDuration;
   body: any;
 }
@@ -20,7 +20,7 @@ interface TimedRequestOptions extends https.RequestOptions {
 
 export default function requestWithDuration(
   options: TimedRequestOptions,
-  callback: (err: HttpError, res: TimedResponse) => any
+  callback: (err: HttpError, res: ResponseWithDuration) => any
 ): void {
   const httpTimestamp: HttpTimestamp = {
     start: process.hrtime(),
