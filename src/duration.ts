@@ -18,28 +18,33 @@ export interface HttpDuration {
   total: number;
 }
 
-export default function getTimings(httpTimings: HttpTimestamp): HttpDuration {
-  const dnsLookup = httpTimings.dnsLookup
-    ? findDuration(httpTimings.start, httpTimings.dnsLookup)
+export default function getEventDuration(
+  httpTimestamp: HttpTimestamp
+): HttpDuration {
+  const dnsLookup = httpTimestamp.dnsLookup
+    ? findDuration(httpTimestamp.start, httpTimestamp.dnsLookup)
     : undefined;
-  const tcpConnectionTime = httpTimings.tcpConnection
+  const tcpConnectionTime = httpTimestamp.tcpConnection
     ? findDuration(
-        httpTimings.dnsLookup || httpTimings.start,
-        httpTimings.tcpConnection
+        httpTimestamp.dnsLookup || httpTimestamp.start,
+        httpTimestamp.tcpConnection
       )
     : undefined;
-  const tlsHandshakeTime = httpTimings.tlsHandshake
-    ? findDuration(httpTimings.tcpConnection, httpTimings.tlsHandshake)
+  const tlsHandshakeTime = httpTimestamp.tlsHandshake
+    ? findDuration(httpTimestamp.tcpConnection, httpTimestamp.tlsHandshake)
     : undefined;
   const firstByte = findDuration(
-    httpTimings.tlsHandshake || httpTimings.tcpConnection,
-    httpTimings.responseBodyStart
+    httpTimestamp.tlsHandshake || httpTimestamp.tcpConnection,
+    httpTimestamp.responseBodyStart
   );
   const contentTransfer = findDuration(
-    httpTimings.responseBodyStart,
-    httpTimings.responseBodyEnd
+    httpTimestamp.responseBodyStart,
+    httpTimestamp.responseBodyEnd
   );
-  const total = findDuration(httpTimings.start, httpTimings.responseBodyEnd);
+  const total = findDuration(
+    httpTimestamp.start,
+    httpTimestamp.responseBodyEnd
+  );
   return {
     dnsLookup,
     tcpConnection: tcpConnectionTime,

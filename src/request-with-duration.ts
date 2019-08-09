@@ -2,14 +2,14 @@ import * as http from "http";
 import * as https from "https";
 import { parse } from "url";
 
-import getTimings, { HttpTimestamp, HttpDuration } from "./timings";
+import getEventDuration, { HttpTimestamp, HttpDuration } from "./duration";
 
 class HttpError extends Error {
   code: string;
 }
 
 interface TimedResponse {
-  timings: HttpDuration;
+  duration: HttpDuration;
   body: any;
 }
 
@@ -18,11 +18,11 @@ interface TimedRequestOptions extends https.RequestOptions {
   timeout?: number;
 }
 
-export default function requestWithTimings(
+export default function requestWithDuration(
   options: TimedRequestOptions,
   callback: (err: HttpError, res: TimedResponse) => any
 ): void {
-  const timings: HttpTimestamp = {
+  const httpTimestamp: HttpTimestamp = {
     start: process.hrtime(),
     dnsLookup: undefined,
     tcpConnection: undefined,
@@ -39,15 +39,15 @@ export default function requestWithTimings(
     .request(requestOptions, res => {
       // The first time response bytes are transferred
       res.once("data", () => {
-        timings.responseBodyStart = process.hrtime();
+        httpTimestamp.responseBodyStart = process.hrtime();
       });
 
       res.on("data", chunk => (response += chunk));
       res.on("end", () => {
-        timings.responseBodyEnd = process.hrtime();
+        httpTimestamp.responseBodyEnd = process.hrtime();
         callback(null, {
           body: response,
-          timings: getTimings(timings)
+          duration: getEventDuration(httpTimestamp)
         });
       });
     })
@@ -57,17 +57,17 @@ export default function requestWithTimings(
   request.on("socket", socket => {
     // Socket created for dnslookup
     socket.on("lookup", () => {
-      timings.dnsLookup = process.hrtime();
+      httpTimestamp.dnsLookup = process.hrtime();
     });
 
     // TCP Connection established
     socket.on("connect", () => {
-      timings.tcpConnection = process.hrtime();
+      httpTimestamp.tcpConnection = process.hrtime();
     });
 
     // TLS Handshake complete
     socket.on("secureConnect", () => {
-      timings.tlsHandshake = process.hrtime();
+      httpTimestamp.tlsHandshake = process.hrtime();
     });
 
     socket.on("timeout", () => {

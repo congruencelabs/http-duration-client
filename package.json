@@ -1,7 +1,7 @@
 {
-  "name": "node-http-lifecycle",
+  "name": "http-duration-client",
   "version": "1.0.0",
-  "description": "Measure latency for Node HTTP lifecycle events",
+  "description": "Measure duration for Node HTTP lifecycle events",
   "main": "index.js",
   "scripts": {
     "precommit": "lint-staged",
@@ -14,20 +14,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/congruencelabs/node-http-lifecycle.git"
+    "url": "git+https://github.com/congruencelabs/http-duration-client.git"
   },
   "keywords": [
     "NodeJS",
     "Http",
     "http-requests",
-    "node-http-lifecycle"
+    "http-duration-client"
   ],
   "author": "Congruence Labs<congruencelabs@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/congruencelabs/node-http-lifecycle/issues"
+    "url": "https://github.com/congruencelabs/http-duration-client/issues"
   },
-  "homepage": "https://github.com/congruencelabs/node-http-lifecycle#readme",
+  "homepage": "https://github.com/congruencelabs/http-duration-client#readme",
   "devDependencies": {
     "@types/jest": "^24.0.13",
     "@types/nock": "^10.0.3",
