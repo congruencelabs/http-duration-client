@@ -7,11 +7,11 @@ Measure duration for Node `HTTP` lifecycle events namely:
 * Content transfer
 * Total request 
 
-[![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/congruencelabs/http-duration-client)](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/results/congruencelabs/http-duration-client)
+[![Build Status](https://travis-ci.org/congruencelabs/http-duration-client.svg?branch=master)](https://travis-ci.org/congruencelabs/http-duration-client)
 
 ## Development
 1. To check the HTTP lifecycle events, clone this repository
-```
+```sh
 git clone git@github.com:congruencelabs/http-duration-client.git
 ```
 
