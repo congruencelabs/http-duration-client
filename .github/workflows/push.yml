@@ -1,0 +1,27 @@
+on: push
+name: build and test
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: install
+      uses: actions/npm@master
+      with:
+        args: install
+    - name: check-format
+      uses: actions/npm@master
+      with:
+        args: run check-format
+    - name: lint
+      uses: actions/npm@master
+      with:
+        args: run lint
+    - name: test
+      uses: actions/npm@master
+      with:
+        args: run test
+    - name: build
+      uses: actions/npm@master
+      with:
+        args: run build
