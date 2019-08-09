@@ -1,18 +1,23 @@
 language: node_js
 node_js:
-  - "10"
-  - "node"
-
+- '10'
+- node
 cache:
   yarn: true
   directories:
-    - node_modules
-
+  - node_modules
 install:
-  - npm install
-
+- npm install
 script:
-  - npm run check-format
-  - npm run lint
-  - npm run test
-  - npm run build
+- npm run check-format
+- npm run lint
+- npm run test
+- npm run build
+deploy:
+  provider: npm
+  email: adisinghrajput@gmail.com
+  api_key:
+    secure: sXlyhPw5J4O/hxbFQj15rEy+HM+BotVdRgEqSUc0atKZD4mSd+Pvl/wqEfFyFLPiniNCG5DTnf9Qa1e6Qg5QEbLERR3gB5VDNRADCbyOwY2+JV2j3VwaKhusWiRIgDallangl1OpOo4LQ1pJOn4x3QoC1R9ExkIGmW93CtHJw9cHX6AUTbWH5qIemw/d09Tlf9ytiqPGPvQQUJ1kuSHLhfeUiDDW7bp5Anec3tN81cNdvPNSjn1HXq7oWb5G+jFGXSxVc7xHPLSnJPMjjtzZSa7O8aL7zt41ocGsU7UAGtc1HtzpVn6PORLVDTncLVmPQe0UOIvDRu4GMEh1Hpq77LLurK46XCgtSr7lwBSz8IGV4TKXbXpXkE+c/Sb1EvueCzTqXvfTN1IpDD8bWYk6N6QcTdnFW1Bqzx4adItiIvkvR+nb0ZNAonqah2qnGy83EzASIVjwMemSvQIrP1eUVvjUDbOcNL+qZM2/rhculImvUma5/yfFtP7WcErOgGrhKaMA+pAURmhih8tH0TraPDPUpLcjNvoMjGIAeetK2FgkgZBvn8QYduBHgLCK3pkRsPCwh2AUXOI7p68GTMh50Vtw+pXlp5EJC7tLUOXQYxTh3klAC77TJfNUqLfCvOGrM///gvC/Bh9yFndx81v5G9f6TiPZFNzLk4rPjYsK8qs=
+  on:
+    tags: true
+    repo: congruencelabs/http-duration-client

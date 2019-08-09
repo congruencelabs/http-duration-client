@@ -2,7 +2,7 @@
   "name": "http-duration-client",
   "version": "1.0.0",
   "description": "Measure duration for Node HTTP lifecycle events",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "precommit": "lint-staged",
     "format": "prettier --no-config --write 'src/**/*.ts'",
@@ -10,7 +10,8 @@
     "lint": "tslint --project .",
     "lint-fix": "tslint --project . --fix",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
