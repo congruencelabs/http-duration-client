@@ -10,8 +10,7 @@
     "lint": "tslint --project .",
     "lint-fix": "tslint --project . --fix",
     "build": "tsc",
-    "test": "jest",
-    "prepublish": "npm run build"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
