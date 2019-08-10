@@ -1,11 +1,14 @@
 # http-duration-client
-Measure duration for Node `HTTP` lifecycle events namely:
+Measure duration for Node `HTTP` lifecycle events from various phases of HTTP:
+
+![Http lifecycle](https://user-images.githubusercontent.com/5351262/62820217-48da5200-bb61-11e9-9fb2-5e843d30f337.png)
+
 * DNS lookup
-* TCP connect
+* TCP/Socket connect
 * TLS connect
 * First byte
 * Content transfer
-* Total request 
+* Total request
 
 [![Build Status](https://travis-ci.org/congruencelabs/http-duration-client.svg?branch=master)](https://travis-ci.org/congruencelabs/http-duration-client)
 
