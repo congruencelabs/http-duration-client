@@ -11,6 +11,8 @@ Measure duration (**in milliseconds**) for Node `HTTP` lifecycle events from var
 * Total request
 
 [![Build Status](https://travis-ci.org/congruencelabs/http-duration-client.svg?branch=master)](https://travis-ci.org/congruencelabs/http-duration-client)
+[![version](https://img.shields.io/npm/v/http-duration-client.svg)](https://npmjs.org/package/http-duration-client?cacheSeconds=3600)
+[![downloads](https://img.shields.io/npm/dt/http-duration-client.svg)](https://npmjs.org/package/http-duration-client?cacheSeconds=3600)
 
 ## Development
 1. To check the HTTP lifecycle events, clone this repository
