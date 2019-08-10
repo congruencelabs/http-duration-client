@@ -1,6 +1,6 @@
 {
   "name": "http-duration-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Measure duration for Node HTTP lifecycle events",
   "main": "dist/index.js",
   "scripts": {
