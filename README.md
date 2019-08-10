@@ -1,5 +1,5 @@
 # http-duration-client
-Measure duration for Node `HTTP` lifecycle events from various phases of HTTP:
+Measure duration (**in milliseconds**) for Node `HTTP` lifecycle events from various phases of HTTP:
 
 ![Http lifecycle](https://user-images.githubusercontent.com/5351262/62820912-023e2500-bb6c-11e9-8a95-c70e2bcab3bf.png)
 
